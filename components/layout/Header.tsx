@@ -23,62 +23,40 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[var(--paper)] border-b border-[var(--ink)]/10"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 bg-[var(--paper)] border-b border-[var(--ink)]/10 transition-all duration-300 ${
+        scrolled ? "shadow-sm" : ""
       }`}
     >
-          {/* Top bar - newspaper masthead style */}
-      <div
-        className={`transition-all duration-500 ${
-          scrolled ? "py-0 overflow-hidden h-0 opacity-0" : "py-2 opacity-100"
-        } border-b border-[var(--paper)]/20 px-6 md:px-10`}
-      >
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-[var(--paper)]/50">
-            Magyarország
-          </span>
-          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-[var(--paper)]/50">
-            hungarytabletopgamesblog.com
-          </span>
-        </div>
-      </div>
-
       {/* Main nav */}
-      <div className={`px-6 md:px-10 transition-all duration-500 ${scrolled ? "py-4" : "py-5"}`}>
+      <div className="px-6 md:px-10 py-4">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between gap-8">
           {/* Wordmark */}
           <Link href="/" className="group shrink-0 min-w-0">
             <div className="flex flex-col leading-none gap-[3px]">
-              <span className={`font-sans text-[9px] tracking-[0.25em] uppercase font-medium transition-colors duration-500 ${scrolled ? "text-[var(--ink)]/40" : "text-[var(--paper)]/40"}`}>
+              <span className="font-sans text-[9px] tracking-[0.25em] uppercase font-medium text-[var(--ink)]/40">
                 Hungary
               </span>
               <div className="flex items-baseline gap-1">
-                <span className={`font-serif font-bold text-[1.05rem] tracking-tight leading-none transition-colors duration-500 ${scrolled ? "text-[var(--ink)]" : "text-[var(--paper)]"}`}>
+                <span className="font-serif font-bold text-[1.05rem] tracking-tight leading-none text-[var(--ink)]">
                   Tabletop
                 </span>
-                <span className={`font-serif italic text-[1.05rem] tracking-tight leading-none transition-colors duration-500 ${scrolled ? "text-[var(--forest)]" : "text-[var(--amber)]"}`}>
+                <span className="font-serif italic text-[1.05rem] tracking-tight leading-none text-[var(--forest)]">
                   Games
                 </span>
-                <span className={`font-serif font-bold text-[1.05rem] tracking-tight leading-none transition-colors duration-500 ${scrolled ? "text-[var(--ink)]/50" : "text-[var(--paper)]/50"}`}>
+                <span className="font-serif font-bold text-[1.05rem] tracking-tight leading-none text-[var(--ink)]/50">
                   Blog
                 </span>
               </div>
             </div>
           </Link>
 
-          {/* Desktop nav - right-aligned, small caps */}
+          {/* Desktop nav */}
           <nav className="hidden md:flex items-baseline gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-sans text-[11px] tracking-[0.2em] uppercase transition-colors duration-200 ${
-                  scrolled
-                    ? "text-[var(--ink)]/60 hover:text-[var(--ink)]"
-                    : "text-[var(--paper)]/60 hover:text-[var(--paper)]"
-                }`}
+                className="font-sans text-[11px] tracking-[0.2em] uppercase text-[var(--ink)]/60 hover:text-[var(--ink)] transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -91,21 +69,9 @@ export default function Header() {
             onClick={() => setOpen(!open)}
             aria-label="Menü"
           >
-            <span
-              className={`block h-px transition-all duration-300 origin-center ${
-                scrolled ? "bg-[var(--ink)]" : "bg-[var(--paper)]"
-              } ${open ? "rotate-45 translate-y-[7px] w-6" : "w-6"}`}
-            />
-            <span
-              className={`block h-px w-4 transition-all duration-300 ${
-                scrolled ? "bg-[var(--ink)]" : "bg-[var(--paper)]"
-              } ${open ? "opacity-0 w-0" : ""}`}
-            />
-            <span
-              className={`block h-px transition-all duration-300 origin-center ${
-                scrolled ? "bg-[var(--ink)]" : "bg-[var(--paper)]"
-              } ${open ? "-rotate-45 -translate-y-[7px] w-6" : "w-5"}`}
-            />
+            <span className={`block h-px bg-[var(--ink)] transition-all duration-300 origin-center ${open ? "rotate-45 translate-y-[7px] w-6" : "w-6"}`} />
+            <span className={`block h-px bg-[var(--ink)] w-4 transition-all duration-300 ${open ? "opacity-0 w-0" : ""}`} />
+            <span className={`block h-px bg-[var(--ink)] transition-all duration-300 origin-center ${open ? "-rotate-45 -translate-y-[7px] w-6" : "w-5"}`} />
           </button>
         </div>
       </div>
